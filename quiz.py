@@ -2,8 +2,23 @@ import random
 
 class Quiz():
     def __init__(self):
-        self.word =['lion', 'eagle', 'piano', 'cheese', 'machine learning']
-        self.clue = ['king of the jungle', 'popular bird', 'music that is black and white', 'mouse\'s food', 'machine that learning by itself']
+        word = []
+        clue = []
+
+        with open('word.txt','r') as w:
+            for line in w.readlines():
+                line = line.rstrip()
+                word.append(line)
+            w.close()
+        
+        with open('clue.txt','r') as c:
+            for line in c.readlines():
+                line = line.rstrip()
+                clue.append(line)
+            c.close()
+
+        self.word = word
+        self.clue = clue
 
         random_number = random.randint(0, len(self.word)-1)
         self.question_word = self.word[random_number]
@@ -40,9 +55,17 @@ class Quiz():
             return 'Answer is wrong'
         
     def update_question(self, new_word, new_clue):
-        self.word.append(new_word)
-        self.clue.append(new_clue)
-        print(self.word)
+        with open('word.txt', 'a') as w:
+            w.write('\n'+new_word)
+
+        with open('clue.txt', 'a') as c:
+            c.write('\n'+new_clue)
+
+        w.close()
+        c.close()
+        # self.word.append(new_word)
+        # self.clue.append(new_clue)
+        # print(self.word)
 
         return 'question added successfully, thank you for participating'
         
