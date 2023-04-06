@@ -7,4 +7,4 @@
 1. run script by using this command ```python home.py```
 2. select option play which is number 1
 3. play as many as you want
-4. if you do not want to play anymore just select exit option which is number 4 in the menu section
+4. if you do not want to play anymore just select exit option which is number 3 in the menu section
